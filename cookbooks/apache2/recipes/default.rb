@@ -14,11 +14,11 @@ template '/var/www/html/fuse.html' do
 	source 'fuse.html.erb'
 end
 
-#template '/etc/apache2/apache2.conf' do
-#	source 'default.conf.erb'
-#end
+template '/etc/apache2/sites-available/000-default.conf' do
+	source 'default.conf.erb'
+end
 
 service 'apache2' do
 	supports status: true 
-	action [:enable, :reload, :start]
+	action [:enable, :restart]
 end
